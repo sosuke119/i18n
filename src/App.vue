@@ -1,12 +1,25 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+     <div class="locale">
+      <select v-model="locale" @change="$i18n.locale = locale">
+        <option value="en">english</option>
+        <option value="ja">日本語</option>
+      </select>
     </div>
+    <p>{{ $t("message.hello") }}</p>
     <router-view/>
   </div>
 </template>
+<script>
+export default {
+  name: 'app',
+  data () {
+    return {
+      locale: 'ja'
+    }
+  }
+}
+</script>
 <style lang="stylus">
 #app
   font-family 'Avenir', Helvetica, Arial, sans-serif
